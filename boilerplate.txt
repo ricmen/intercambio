@@ -1,0 +1,49 @@
+npm init
+npm install express --save
+
+
+var express = require('express');
+
+var app = express();
+
+var port = process.env.PORT || 3000;
+
+
+app.listen(port, function(){
+	console.log('Runing on port' + port);
+});
+
+
+---- GULP  ----
+
+npm install gulp --save
+
+
+npm install gulp -g
+npm install gulp-nodemon --save
+
+
+*******************************
+Create a file gulpfile.js
+
+
+var gulp = require('gulp')
+	nodemon = require('gulp-nodemon');
+
+gulp.task('default', function(){
+	nodemon({
+		script: 'app.js',
+		ext: 'js',
+		env: {
+				PORT:8000
+			},
+			ignore: ['./node_modules/**']
+	})
+	.on('restart', function(){
+		console.log('Restarting')
+	})
+});
+
+
+***********************
+
