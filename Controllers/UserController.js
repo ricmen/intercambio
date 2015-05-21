@@ -5,11 +5,15 @@ var userController = function(User){
 	if(!req.body.nombre){
 		res.status(400);
 		res.send('El nombre es requerido');
-	}else{
+	}else{	
+		user.save(function(err, user){
+			if(err) return res.status(400).send(err);
 
-		user.save();
-		res.status(201);
-		res.send(user);
+			console.log(user);
+			res.status(201);
+			res.send(user);
+		});
+		
 		}
 	}
 
