@@ -1,15 +1,15 @@
 var userController = function(User){
 
 	var post = function(req,res){
-		var User = new User(req.body);
-	if(!req.body.title){
+		var user = new User(req.body);
+	if(!req.body.nombre){
 		res.status(400);
 		res.send('El nombre es requerido');
 	}else{
 
-		User.save();
+		user.save();
 		res.status(201);
-		res.send(User);
+		res.send(user);
 		}
 	}
 

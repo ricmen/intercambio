@@ -47,3 +47,63 @@ gulp.task('default', function(){
 
 ***********************
 
+
+Agregar router 
+
+var nombreRuteador = express.Router();
+
+app.use('/api',nombreRuteador);
+
+nombreRuteador.route('/nombreRuteador')
+.get(function(req, res){
+	var responseJson = {
+		hello: 'Catalogo de Primos'
+	};
+	res.json(responseJson);
+});
+
+
+------------ Install Mongo -----------------
+
+npm install mongoose --save /// para la conexion 
+
+var db = mongoose.connect('mongodb://localhost/users');
+
+
+Crear modelos 
+
+var model = require('./models/modelo');
+
+en el model 
+
+***** Modelo.js  *****
+
+var mongoose = require('mongoose'),
+	Sechema = mongoose.Schema;
+
+var userModel = new Schema({
+	{
+		nombre: {type: String},
+		apellidoPaterno: {type: String},
+		apellidoMaterno: {type: String},
+		fechaNacimiento: {type: String}
+	}
+});
+
+
+module.exports = mongoose.model('user',userModel);
+*********************************************************************
+
+---------- Body-parser -------
+
+npm install body-parser --save
+
+bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+--------------------  Routers  ----------------
+
+
+
