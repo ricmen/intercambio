@@ -1,16 +1,12 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	bcrypt = require('bcrypt'),
+	bcrypt = require('bcryptjs'),
 	SALT_WORK_FACTOR = 10;
 
 var userModel = new Schema({
-		nombre: {type: String, required:true},
-		apellidoPaterno: {type: String, required:true},
-		apellidoMaterno: {type: String},
-		fechaNacimiento: {type: String},
-		nombreUsuario: {type: String, required: true, index : {unique: true}},
+		nombre: {type: String, required:true},		
 		password: {type: String, required: true},
-		email: {type: String},
+		email: {type: String, required:true},
 		sugerencias : {type : Array}
 
 	});
