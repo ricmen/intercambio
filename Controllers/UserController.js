@@ -1,6 +1,7 @@
 var userController = function(User){
 
 	var post = function(req,res){
+		console.log(req.body);
 		var user = new User(req.body);
 	if(!req.body.nombre){
 		res.status(400);
@@ -8,7 +9,6 @@ var userController = function(User){
 	}else{	
 		user.save(function(err, user){
 			if(err) return res.status(400).send(err);
-
 			console.log(user);
 			res.status(201);
 			res.send(user);
@@ -38,7 +38,7 @@ var userController = function(User){
 			}
 		});
 	}
-
+	
 	return {
 		post: post,
 		get:get

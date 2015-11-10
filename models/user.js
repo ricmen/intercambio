@@ -4,16 +4,16 @@ var mongoose = require('mongoose'),
 	SALT_WORK_FACTOR = 10;
 
 var userModel = new Schema({
-		nombre: {type: String, required:true},		
+		nombre: {type: String, required:true, unique: true},		
 		password: {type: String, required: true},
-		email: {type: String, required:true},
+		email: {type: String, required:true, unique: true},
 		sugerencias : {type : Array}
 
 	});
 
 userModel.pre('save', function(next){
 	var user = this;
-
+	
 	//only hash the password if it has been modified (or if is new)
 	if(!user.isModified('password')) return next();
 

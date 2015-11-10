@@ -8,6 +8,8 @@ var routes = function(User) {
 	userRouter.route('/')
 	.post(UserController.post)
 	.get(UserController.get);
+	
+	
 	userRouter.use("/:UserId", function(req,res,next){
 		User.findById(req.params.UserId, function(err,User){				
 			if(err){
@@ -29,7 +31,9 @@ var routes = function(User) {
 			res.json(returnUser);
 		
 	})
-	.put(function(req,res){		
+	.put(function(req, res){		
+		console.log("Enter PUT");
+		console.log(req);
 		req.User.nombre = req.body.nombre;
 		req.User.apellidoPaterno = req.body.apellidoPaterno;
 		req.User.apellidoMaterno = req.body.apellidoMaterno;
@@ -40,7 +44,7 @@ var routes = function(User) {
 				res.status(500).send(err);
 			}else
 			{
-				res.json(req.User);
+				res.json(req.body);
 			}
 		});			
 	})
