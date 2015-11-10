@@ -42,10 +42,7 @@ mailer.extend(app, {
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.post('/registro', function (req, res, next) {
-  console.log("******************");
-  console.log(req);
-  console.log("******************");
+app.post('/registro', function (req, res, next) { 
   app.mailer.send('email', {
     to: req.body.email, // REQUIRED. This can be a comma delimited string just like a normal email to field.  
     subject: 'Bienvenid@ al intercambio', // REQUIRED. 
